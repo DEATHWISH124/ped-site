@@ -1,8 +1,13 @@
 body{
     background: rgb(2,0,36);
-background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(22,0,41,1) 35%, rgba(37,0,93,1) 100%);
+background: linear-gradient(180deg, rgb(0, 0, 0) 0%, rgb(0, 0, 0) 35%, rgb(54, 54, 54) 100%);
 h1{
     color: blueviolet;
+
+    scroll-behavior: smooth;
+
+    float:right;
+    margin-top:25%;
 }
 .button {
     background-color: #4404aa; /* Green */
@@ -13,4 +18,18 @@ h1{
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
+  }
+
+  /* HTML: <div class="loader"></div> */
+.loader {
+    width: 120px;
+    height: 20px;
+    -webkit-mask:linear-gradient(90deg,#000 70%,#0000 0) 0/20%;
+    background:
+     linear-gradient(#000 0 0) 0/0% no-repeat
+     #ddd;
+    animation: l4 2s infinite steps(6);
+  }
+  @keyframes l4 {
+      100% {background-size:120%}
   }
