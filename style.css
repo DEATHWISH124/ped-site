@@ -1,35 +1,83 @@
 body{
-    background: rgb(2,0,36);
-background: linear-gradient(180deg, rgb(0, 0, 0) 0%, rgb(0, 0, 0) 35%, rgb(54, 54, 54) 100%);
-h1{
-    color: blueviolet;
-
-    scroll-behavior: smooth;
-
-    float:right;
-    margin-top:25%;
+    background-color: rgb(0, 0, 0);
 }
-.button {
-    background-color: #4404aa; /* Green */
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
+
+
+.titulo{
+    color: rgb(255, 255, 255);
+    position: absolute;
+      top: 25%;
+      left: 15%;
+      transform: translate(-50%, -50%);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 30px;
+
+}
+
+.postagem{
+    position: absolute;
+      top: 55%;
+      left: 17%;
+      transform: translate(-50%, -50%);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size:10px;
+      color: white;
+}
+
+.user{
+position: absolute;
+      top:1%; 
+      left: 90%;
+      border:  none;
+      background-color: rgb(0, 0, 0);   
+}
+
+.user:hover{
+    background-color: rgb(0, 0, 0);
+    cursor: pointer;
+    
   }
 
-  /* HTML: <div class="loader"></div> */
-.loader {
-    width: 120px;
-    height: 20px;
-    -webkit-mask:linear-gradient(90deg,#000 70%,#0000 0) 0/20%;
-    background:
-     linear-gradient(#000 0 0) 0/0% no-repeat
-     #ddd;
-    animation: l4 2s infinite steps(6);
+body{
+    font-family: sans-serif;
+    background-color: black;
   }
-  @keyframes l4 {
-      100% {background-size:120%}
+
+  .logo{
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    resize: both ;
+  }
+  
+  .login{
+    background-color: rgb(61, 61, 61);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    border-radius: 15px;
+    color: white;
+    font-size: 15;
+  }
+
+  input{
+    padding: 15px;
+    border: none;
+    outline: none;
+    font-size: 15px
+  }
+
+  button{
+    background-color: rgb(0, 0, 0);
+    border:  none;
+    padding: 15px;
+    width: 100%;
+    }
+  
+    button:hover{
+    background-color: rgb(0, 0, 0);
+    cursor: pointer;
   }
