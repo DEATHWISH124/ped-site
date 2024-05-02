@@ -6,7 +6,7 @@ background-color: black;
 .titulo{
     color: rgb(255, 255, 255);
     position: absolute;
-      top: 25%;
+      top: 23%;
       left: 50%;
       transform: translate(-50%, -50%);
       font-family: Arial, Helvetica, sans-serif;
