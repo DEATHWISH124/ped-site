@@ -1,30 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>P.E.D</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* CSS básico para deixar o login bonitinho e centralizado */
+    body {
+      background-color: #222;
+      color: white;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .logo {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .login {
+      max-width: 350px;
+      margin: 40px auto;
+      padding: 30px;
+      background-color: #333;
+      border-radius: 8px;
+      box-shadow: 0 0 10px #000;
+    }
+
+    .login h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .login input[type="text"],
+    .login input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0 20px 0;
+      border: none;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
+    .login input[type="submit"] {
+      width: 100%;
+      background-color: #007bff;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .login input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+
+    .login a {
+      display: block;
+      text-align: center;
+      margin-top: 15px;
+      color: #ddd;
+      text-decoration: none;
+    }
+
+    .login a:hover {
+      color: white;
+      text-decoration: underline;
+    }
+
+    #mensagem {
+      text-align: center;
+      margin-top: 10px;
+      font-weight: bold;
+      color: #f88;
+    }
+  </style>
 </head>
 <body>
   <div class="logo">
-<img src="https://i.imgur.com/rRcx0h7.png" 
-width="500^px"
-height="300px">
-  
-</div>
-  
-  <div class="login">
-    <form action="login.php" method="post">
-    <center><h1>Login</h1></center>
-<center><input type="text" id="nomeusuario" name="usuarioNM" placeholder="Username"></center>
-<br><br>
-<center><input type="password" id="senhafoda" name="senhaUSER" placeholder="Senha"> </center>
-<br><br>
-<center><input type="submit" value="Entrar"></center>
-        </form>
-        <br>
-        <a style="color: white;" href="cadastro.html"> Novo por aqui? Registre-se hoje.</a>
+    <img
+      src="https://i.imgur.com/rRcx0h7.png"
+      width="500"
+      height="300"
+      alt="Logo"
+    />
   </div>
+
+  <div class="login">
+    <!-- REMOVIDO action e method do form, vamos fazer via JS -->
+    <form id="loginForm">
+      <h1>Login</h1>
+      <input
+        type="text"
+        id="nomeusuario"
+        name="username"
+        placeholder="Username"
+        required
+      />
+      <input
+        type="password"
+        id="senhafoda"
+        name="password"
+        placeholder="Senha"
+        required
+      />
+      <input type="submit" value="Entrar" />
+    </form>
+    <p id="mensagem"></p>
+
+    <a href="cadastro.html">Novo por aqui? Registre-se hoje.</a>
+  </div>
+
+  <script>
+    const form = document.getElementById('loginForm');
+    const mensagem = document.getElementById('mensagem');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const dados = {
+        username: form.username.value,
+        password: form.password.value,
+      };
+
+      try {
+        const resposta = await fetch('/api/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(dados),
+        });
+
+        const texto = await resposta.text();
+        if (resposta.ok) {
+          mensagem.style.color = '#8f8'; // verde suave pra sucesso
+        } else {
+          mensagem.style.color = '#f88'; // vermelho pra erro
+        }
+        mensagem.textContent = texto;
+      } catch (error) {
+        mensagem.style.color = '#f88';
+        mensagem.textContent = 'Erro na comunicação com o servidor.';
+      }
+    });
+  </script>
 </body>
 </html>
