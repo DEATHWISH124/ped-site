@@ -5,13 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Piu's Enterprise Division</title>
     <link rel="icon" href="https://cdn.discordapp.com/attachments/1111332471787749427/1210937480979685417/image.png?ex=65ec6069&is=65d9eb69&hm=88579d9375ee084dd257235853dbfa9e26f0f87af2c6673ae0fb0bc242bf24a0&" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
 </head>
-<link rel="stylesheet" href="style.css">
 <body>
 
 <div class="logo">
-    <img src="https://i.imgur.com/rRcx0h7.png" 
-    width="350">
+    <img src="https://i.imgur.com/rRcx0h7.png" width="350">
 </div>
 
 <div class="titulo">
@@ -19,9 +18,9 @@
     <strong>LEGAL</strong>
 </div>
 
-<center><div class="postagem" style="font-family: Arial, Helvetica, sans-serif; font-size: 25px;">
-    <img src="https://www.thedailymeal.com/img/gallery/the-guaranteed-way-to-crack-an-egg-without-breaking-the-yolk/l-intro-1666830310.jpg" 
-    width="300">
+<center>
+<div class="postagem" style="font-family: Arial, Helvetica, sans-serif; font-size: 25px;">
+    <img src="https://www.thedailymeal.com/img/gallery/the-guaranteed-way-to-crack-an-egg-without-breaking-the-yolk/l-intro-1666830310.jpg" width="300">
     <br>
     <a href="zrkv.html"> Zerkova</a>
     <br>
@@ -32,20 +31,57 @@
     <a href="003.html"> Sinister</a>
     <br>
     <a href="005.html"> Salty</a>
-</center>
 </div>
+</center>
 
 <div class="user">
     <button>
-        <a href="login.html"a>
+        <a href="login.html"></a>
     </button>
     <input type="image" id="myimage" style="height:50px;width:50px;" src="https://i.imgur.com/gPCzsk2.png"/>
-    <a href="login.html">
- </div>
+    <a href="login.html"></a>
+</div>
 
- <div class="credittext">
+<!-- 🔐 FORMULÁRIO DE LOGIN INTEGRADO COM A API -->
+<div id="login-area" style="text-align: center; margin-top: 50px;">
+    <h2>Login</h2>
+    <form id="loginForm">
+        <input type="text" name="username" placeholder="Usuário" required><br><br>
+        <input type="password" name="password" placeholder="Senha" required><br><br>
+        <button type="submit">Entrar</button>
+    </form>
+    <p id="mensagem" style="color: red;"></p>
+</div>
+<!-- 🔐 FIM DO FORMULÁRIO DE LOGIN -->
+
+<div class="credittext">
     <a><h1>Copyright © 2024 PIU'S ENTERPRISE DIVISION™ . All rights reserved</h1></a>
-  </div>
+</div>
+
+<!-- 🔌 SCRIPT DE CONEXÃO COM A API DO LOGIN -->
+<script>
+  const form = document.getElementById('loginForm');
+  const mensagem = document.getElementById('mensagem');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const dados = {
+      username: form.username.value,
+      password: form.password.value
+    };
+
+    const resposta = await fetch('/api/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(dados)
+    });
+
+    const texto = await resposta.text();
+    mensagem.textContent = texto;
+  });
+</script>
+<!-- 🔌 FIM DO SCRIPT -->
 
 </body>
 </html>
