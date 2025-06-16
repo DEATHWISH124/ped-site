@@ -1,95 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Piu's Enterprise Division</title>
-    <link rel="icon" href="https://cdn.discordapp.com/attachments/1111332471787749427/1210937480979685417/image.png?ex=65ec6069&is=65d9eb69&hm=88579d9375ee084dd257235853dbfa9e26f0f87af2c6673ae0fb0bc242bf24a0&" type="image/x-icon">
-    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="https://cdn.discordapp.com/attachments/1111332471787749427/1210937480979685417/image.png" type="image/x-icon" />
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
 <div class="logo">
-    <img src="https://i.imgur.com/rRcx0h7.png" width="350">
+    <img src="https://i.imgur.com/rRcx0h7.png" width="350" />
 </div>
 
 <div class="titulo">
-    <strong>OVOS 2018 foda</strong>
+    <strong>OVOS 2018 foda</strong><br />
     <strong>LEGAL</strong>
 </div>
 
 <center>
 <div class="postagem" style="font-family: Arial, Helvetica, sans-serif; font-size: 25px;">
-    <img src="https://www.thedailymeal.com/img/gallery/the-guaranteed-way-to-crack-an-egg-without-breaking-the-yolk/l-intro-1666830310.jpg" width="300">
-    <br>
-    <a href="zrkv.html"> Zerkova</a>
-    <br>
-    <a href="004.html"> DeathWish</a>
-    <br>
-    <a href="002.html"> Ty</a>
-    <br>
-    <a href="003.html"> Sinister</a>
-    <br>
-    <a href="005.html"> Salty</a>
+    <img src="https://www.thedailymeal.com/img/gallery/the-guaranteed-way-to-crack-an-egg-without-breaking-the-yolk/l-intro-1666830310.jpg" width="300" />
+    <br />
+    <a href="zrkv.html">Zerkova</a><br />
+    <a href="004.html">DeathWish</a><br />
+    <a href="002.html">Ty</a><br />
+    <a href="003.html">Sinister</a><br />
+    <a href="005.html">Salty</a>
 </div>
 </center>
 
 <div class="user">
     <a href="login.html">
-      <img id="myimage" style="height:50px;width:50px; cursor:pointer;" src="https://i.imgur.com/gPCzsk2.png" alt="User Icon"/>
+        <img id="myimage" style="height:50px; width:50px; cursor:pointer;" src="https://i.imgur.com/gPCzsk2.png" alt="User Icon" />
     </a>
-  </div>
-  
-
-<div class="credittext">
-    <a><h1>Copyright © 2024 PIU'S ENTERPRISE DIVISION™ . All rights reserved</h1></a>
 </div>
 
-<!-- 🔌 SCRIPT DE CONEXÃO COM A API DO LOGIN -->
+<!-- FORMULÁRIO DE LOGIN -->
+<div id="login-area" style="text-align:center; margin-top: 50px;">
+    <h2>Login</h2>
+    <form id="loginForm">
+        <input type="text" name="username" placeholder="Usuário" required /><br /><br />
+        <input type="password" name="password" placeholder="Senha" required /><br /><br />
+        <button type="submit">Entrar</button>
+    </form>
+    <p id="mensagem" style="color: red;"></p>
+</div>
+
+<div class="credittext">
+    <a><h1>Copyright © 2024 PIU'S ENTERPRISE DIVISION™. All rights reserved</h1></a>
+</div>
+
 <script>
     const form = document.getElementById('loginForm');
     const mensagem = document.getElementById('mensagem');
-  
+
     form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-  
-      const dados = {
-        username: form.username.value,
-        password: form.password.value,
-      };
-  
-      try {
-        const resposta = await fetch('/api/login', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(dados),
-        });
-  
-        const texto = await resposta.text();
-  
-        if (resposta.ok) {
-          mensagem.style.color = '#8f8'; // verde para sucesso
-          mensagem.textContent = texto;
-  
-          // redireciona após 1 segundo para 003.html
-          setTimeout(() => {
-            window.location.href = '003.html';
-          }, 1000);
-  
-        } else {
-          mensagem.style.color = '#f88'; // vermelho para erro
-          mensagem.textContent = texto;
+        e.preventDefault();
+
+        const dados = {
+            username: form.username.value,
+            password: form.password.value,
+        };
+
+        try {
+            const resposta = await fetch('/api/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(dados),
+            });
+
+            const texto = await resposta.text();
+
+            if (resposta.ok) {
+                mensagem.style.color = '#8f8'; // verde
+                mensagem.textContent = texto;
+
+                setTimeout(() => {
+                    window.location.href = '005.html'; // redireciona para 005.html
+                }, 1000);
+            } else {
+                mensagem.style.color = '#f88'; // vermelho
+                mensagem.textContent = texto;
+            }
+        } catch (error) {
+            mensagem.style.color = '#f88';
+            mensagem.textContent = 'Erro na comunicação com o servidor.';
+            console.error(error);
         }
-      } catch (error) {
-        mensagem.style.color = '#f88';
-        mensagem.textContent = 'Erro na comunicação com o servidor.';
-      }
     });
-  </script>
-  
-<!-- 🔌 FIM DO SCRIPT -->
+</script>
 
 </body>
 </html>
