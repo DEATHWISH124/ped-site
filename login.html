@@ -140,13 +140,21 @@
         const texto = await resposta.text();
         if (resposta.ok) {
           mensagem.style.color = '#8f8'; // verde suave pra sucesso
+          mensagem.textContent = texto;
+
+          // redireciona para 005.html após 1 segundo
+          setTimeout(() => {
+            window.location.href = '005.html';
+          }, 1000);
+
         } else {
           mensagem.style.color = '#f88'; // vermelho pra erro
+          mensagem.textContent = texto;
         }
-        mensagem.textContent = texto;
       } catch (error) {
         mensagem.style.color = '#f88';
         mensagem.textContent = 'Erro na comunicação com o servidor.';
+        console.error(error);
       }
     });
   </script>
